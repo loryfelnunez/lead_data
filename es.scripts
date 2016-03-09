@@ -1,0 +1,26 @@
+PUT /all_county_data/
+
+PUT /all_county_data/_mapping/allcountydata
+{
+    "properties": {
+      "Percent_Under6_Poverty": {"type": "float"},
+      "TOTAL_HOUSING_UNITS": {"type": "float"},
+      "Pre1950_House": {"type": "float"},
+      "State": {"type": "string"},
+      "FIPS": {"type": "string"},
+      "COUNTY_NAME": {"type": "string"},
+      "PERCENT_CHILDREN_TESTED": {"type": "float"},
+      "Pop_children_Under6": {"type": "float"},
+      "NUM_CHILDREN_TESTED": {"type": "float"},
+      "PERCENT_CHILDREN_ELEVATED_BLOOD": {"type": "float"},
+      "TOTAL_CONFIRMED_CASES": {"type": "float"},
+      "location": {
+                  "type": "geo_point",
+                  "lat_lon": true,
+                  "geohash": true
+                 }
+      }
+   
+}
+
+curl -s -XPOST localhost:9200/county_lead/countydata/_bulk --data-binary "@all_states.json"; echo
